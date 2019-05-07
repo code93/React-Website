@@ -13,4 +13,13 @@ const firebaseConfig = {
   firebase.initializeApp(firebaseConfig);
 
 
-  firebase.database().ref().set('it works');
+  
+  const storage = firebase.storage();
+  const storageRef = storage.ref();
+  const imagesRef = storageRef.child('images');
+  const fileName = 'p1.png';
+  const spaceRef = imagesRef.child(fileName);
+  const path = spaceRef.fullPath;
+
+
+  firebase.database().ref().set('it works'`path`);
