@@ -22,4 +22,4 @@ const firebaseConfig = {
   const path = spaceRef.fullPath;
 
 
-  firebase.database().ref().set('it works'`path`);
+  firebase.database().ref().set('it works');
