@@ -17,9 +17,19 @@ const firebaseConfig = {
   const storage = firebase.storage();
   const storageRef = storage.ref();
   const imagesRef = storageRef.child('images');
-  const fileName = 'p1.png';
+  const fileName = 'p10.png';
   const spaceRef = imagesRef.child(fileName);
   const path = spaceRef.fullPath;
+
+  export {
+    storage,
+    storageRef,
+    imagesRef,
+    fileName,
+    spaceRef,
+    path
+
+  }
 
 
   firebase.database().ref().set('it 93 works');
