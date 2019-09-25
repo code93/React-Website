@@ -3,14 +3,14 @@ import axios from 'axios';
 
 import SliderTemplates from './slider_templates';
 
-class ProductSlider extends Component {
+class NewsSlider extends Component {
 
         state = {
             news:[]
         }
 
         componentWillMount(){
-            axios.get("gs://fitindiamission-8d35e.appspot.com/?_start={}&_end=3")
+            axios.get(`http://localhost:3000/articles?_start=0&_end=3`)
             .then( response => {
                 this.setState({
                     news: response.data
@@ -20,9 +20,9 @@ class ProductSlider extends Component {
 
         render(){
             return(
-                <SliderTemplates data={this.state.news}/>
+                <SliderTemplates data={this.state.news} type="featured"/>
             )
         }
 }
 
-export default ProductSlider
+export default NewsSlider

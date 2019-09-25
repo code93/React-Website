@@ -1,12 +1,12 @@
 import React from 'react';
 
-import ProductSlider from '../components/widgets/ProductSlider/slider';
+import NewsSlider from '../components/widgets/NewsSlider/slider';
 
 const Home = () =>
 {
     return(
         <div>
-            <ProductSlider/>
+            <NewsSlider/>
             </div>
     )
 }
