@@ -10,7 +10,7 @@ class ProductSlider extends Component {
         }
 
         componentWillMount(){
-            axios.get("gs://fitindiamission-8d35e.appspot.com/?_start=0&_end=3")
+            axios.get("gs://fitindiamission-8d35e.appspot.com/?_start={}&_end=3")
             .then( response => {
                 this.setState({
                     news: response.data

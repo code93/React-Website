@@ -10,7 +10,7 @@ const Footer = () => (
         <img alt="fim logo" src="/images/fim_logo.png"/>
         </Link>
         <div>
-            @FIT INDIA MISSION {CURRENT_YEAR} all rights reserved.
+            @SB {CURRENT_YEAR} all rights reserved.
         </div>
     </div>
 
