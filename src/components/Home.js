@@ -6,7 +6,14 @@ const Home = () =>
 {
     return(
         <div>
-            <NewsSlider/>
+            <NewsSlider
+                type="featured"
+                start={3}
+                amount={6}
+                settings={{
+                    dots:false
+                }}
+            />
             </div>
     )
 }
