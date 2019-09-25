@@ -1,7 +1,7 @@
 const CURRENT_YEAR = (new Date()).getFullYear()
-const PASSWORD = "DDDDD"
+const URL = "http://localhost:3000"
 
 export {
     CURRENT_YEAR,
-    
+    URL 
 }
