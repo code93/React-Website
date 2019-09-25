@@ -1,6 +1,8 @@
 import React from 'react';
+import { Link } from 'react-router-dom';
 
 import Slick from 'react-slick';
+import styles from './styler.css'
 
 const SliderTemplates = (props) => {
     let template= null;
@@ -18,7 +20,20 @@ const SliderTemplates = (props) => {
             template = props.data.map( (item,i)=>{
                 return(
                     <div key={i}>
-                        {i}
+                        <div className={styles.featured_item}>
+                            <div className={styles.featured_image}
+                            style={{
+                                background: `url(../images/articles/${item.image})`
+
+                            }}
+                            ></div>
+                            <Link to={`/articles/${item.id}`}>
+                                <div className={styles.featured_caption}>
+                                    {item.title}
+                                </div>
+
+                            </Link>
+                        </div>
                     </div>
                 )
             })
