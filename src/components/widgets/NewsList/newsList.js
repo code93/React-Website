@@ -4,8 +4,8 @@ import { Link } from 'react-router-dom';
 import axios from 'axios';
 
 import { URL } from '../../../config';
-import styles from './newsList.css'
-
+import styles from './newsList.css';
+import Button from '../Buttons/buttons';
 
 class NewsList extends Component {
 
@@ -40,13 +40,23 @@ class NewsList extends Component {
         switch(type){
             case('card'):
                 template= this.state.items.map( (item, i) => (
-                    <div>
+                    <CSSTransition
+                        classNames={{
+                            enter:styles.newsList_wrapper,
+                            enterActive:styles.newsList_wrapper_enter
+                        }}
+                        timeout={500}
+                        key={i}
+                    >
+                         <div>
                         <div className={StyleSheet.newslist_item}>
                             <Link to={`/articles/${item.id}`}>
                                 <h2>{item.title}</h2>
                             </Link>
                         </div>
                     </div>
+                    </CSSTransition>
+                   
                 ))
                 break;
             default:
@@ -59,10 +69,19 @@ class NewsList extends Component {
     render(){
         return(
             <div>
+                <TransitionGroup
+                    component="div"
+                    className="list"
+                >
                 { this.renderNews( this.props.type )}
-                <div onClick={()=>this.loadMore()}>
-                    LOAD MORE
-                </div>
+                
+                </TransitionGroup>
+                <Button 
+                    type="loadmore"
+                    loadMore={()=>this.loadMore()}
+                    cta="Load More News"
+                />
+               
             </div>
         )
     }
