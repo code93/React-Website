@@ -29,8 +29,8 @@ const SideNavItems = () => {
         {
             type: style.option,
             icon: 'file-text-o',
-            text: 'About',
-            link: '/about'
+            text: 'news',
+            link: '/news'
         },
         {
             type: style.option,
