@@ -1,14 +1,39 @@
 import * as firebase from 'firebase';
 
-const firebaseConfig = {
-    apiKey: "AIzaSyCC05Wp2ZLjTwq3K_46ZQCvdFlMc4-RiIY",
-    authDomain: "fitindiamission-8d35e.firebaseapp.com",
-    databaseURL: "https://fitindiamission-8d35e.firebaseio.com",
-    projectId: "fitindiamission-8d35e",
-    storageBucket: "fitindiamission-8d35e.appspot.com",
-    messagingSenderId: "975428497398",
-    appId: "1:975428497398:web:f86aeda74fd90f05"
+const config = {
+  apiKey: "AIzaSyCSZ7MBDzQ4xXGVQoUjIED7GhRMIw7UYuI",
+  authDomain: "code93-67192.firebaseapp.com",
+  databaseURL: "https://code93-67192.firebaseio.com",
+  projectId: "code93-67192",
+  storageBucket: "",
+  messagingSenderId: "988854676856",
+  appId: "1:988854676856:web:2d9784289117aee2a1ac8d",
+  measurementId: "G-Z4QPP9PSW6"
   };
-  // Initialize Firebase
-  firebase.initializeApp(firebaseConfig);
-  firebase.database().ref().set('it 93 works');
+
+  firebase.initializeApp(config);
+
+  const firebaseDB = firebase.database();
+  const firebaseArticles= firebaseDB.ref('articles');
+  const firebaseTeams = firebaseDB.ref('teams');
+  const firebaseVideos = firebaseDB.ref('videos');
+
+  const firebaseLooper = (snapshot) => {
+    const data=[];
+    snapshot.forEach((childSnapshot)=>{
+        data.push({
+            ...childSnapshot.val(),
+            id:childSnapshot.key
+        })
+    });
+    return data;
+  }
+ 
+  export {
+    firebase,
+    firebaseDB,
+    firebaseArticles,
+    firebaseVideos,
+    firebaseTeams,
+    firebaseLooper
+  }
