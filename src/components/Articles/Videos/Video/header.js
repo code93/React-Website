@@ -1,6 +1,5 @@
 import React from 'react';
 import TeamInfo from '../../Elements/teamInfo';
-import teamInfo from '../../Elements/teamInfo';
 
 
 const header = (props) => {

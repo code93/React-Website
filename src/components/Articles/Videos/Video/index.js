@@ -3,7 +3,6 @@ import { firebaseDB, firebaseLooper, firebaseTeams, firebaseVideos } from '../..
 
 import styles from '../../articles.css';
 import Header from './header';
-import NewsArticles from '../../News/Post';
 import VideosRelated from '../../../widgets/VideosList/VideosRelated/videosRelated';
 
 
