@@ -1,8 +1,7 @@
 import React, {Component} from 'react';
-import { firebaseDB, firebaseLooper, firebaseTeams, firebaseVideos } from '../../../../firebase';
+import { firebaseDB, firebaseLooper, firebaseVideos } from '../../../../firebase';
 
 import styles from '../../articles.css';
-import Header from './header';
 import VideosRelated from '../../../widgets/VideosList/VideosRelated/videosRelated';
 
 
@@ -10,8 +9,6 @@ class VideoArticle extends Component {
 
     state = {
         article: [],
-        team:[],
-        teams:[],
         related:[]
     }
 
@@ -20,17 +17,12 @@ class VideoArticle extends Component {
         .then((snapshot)=>{
             let article = snapshot.val();
 
-             firebaseTeams.orderByChild("id").equalTo(article.team).once('value')
-             .then((snapshot)=>{
-                 const team= firebaseLooper(snapshot);
+            
                  this.setState({
-                     article,
-                     team
+                     article
                  })
                  this.getRelated();
              })
-
-        })
         // axios.get(`${URL}/videos?id=${this.props.match.params.id}`)
         // .then( response => {
         //     let article = response.data[0];
@@ -49,22 +41,15 @@ class VideoArticle extends Component {
     }
 
     getRelated = () => {
-        firebaseTeams.once('value')
-         .then((snapshot)=>{
-             const teams = firebaseLooper(snapshot);
-
              firebaseVideos
-             .orderByChild("team").
-             equalTo(this.state.article.team)
              .limitToFirst(3).once('value')
              .then((snapshot)=>{
                  const related = firebaseLooper(snapshot);
                  this.setState({
-                     teams,
                      related
                  })
              })
-         })
+         
         // axios.get(`${URL}/teams`)
         // .then( response =>{
 
@@ -84,11 +69,10 @@ class VideoArticle extends Component {
 
     render(){
         const article = this.state.article;
-        const team = this.state.team;
 
         return(
             <div>
-                <Header teamData={team[0]}/>
+            
                 <div className={styles.videoWrapper}>
                     <h1>{article.title}</h1>
                     <iframe
@@ -102,7 +86,7 @@ class VideoArticle extends Component {
                 </div>
                 <VideosRelated 
                 data={this.state.related}
-                teams={this.state.teams}/>
+               />
 
             </div>
         )

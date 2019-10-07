@@ -1,5 +1,5 @@
 import React, { Component } from 'react';
-import {firebase, firebaseDB, firebaseLooper, firebaseTeams } from '../../../../firebase';
+import {firebase, firebaseDB } from '../../../../firebase';
 import styles from '../../articles.css';
 import Header from './header';
 
@@ -8,7 +8,6 @@ class NewsArticles extends Component {
 
     state = {
         article: [],
-        team:[],
         imageURL:''
     }
 
@@ -17,17 +16,14 @@ class NewsArticles extends Component {
          .then((snapshot)=>{
              let article = snapshot.val();
 
-              firebaseTeams.orderByChild("id").equalTo(article.team).once('value')
-              .then((snapshot)=>{
-                  const team= firebaseLooper(snapshot);
+              
                   this.setState({
-                      article,
-                      team
+                      article
                   })
                   this.getImageURL(article.image)
               })
 
-         })
+         }
 
 
 
@@ -47,7 +43,6 @@ class NewsArticles extends Component {
 
 
         // })
-    }
 
     getImageURL = (filename) =>{
         firebase.storage().ref('images')
@@ -59,15 +54,14 @@ class NewsArticles extends Component {
         })
     }
 
+
     render(){
         const article = this.state.article;
-        const team = this.state.team;
-
-
         return(
+           
             <div className={styles.articleWrapper}>
                 <Header
-                    teamData={team[0]}
+                   
                     date={article.date}
                     author={article.author}
                 />
@@ -90,7 +84,7 @@ class NewsArticles extends Component {
 
             </div>
         )
-    }
-}
+                }
+                }
 
 export default NewsArticles;
