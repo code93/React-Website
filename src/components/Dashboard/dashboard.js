@@ -66,9 +66,9 @@ class Dashboard extends Component {
                     options:[]
                 },
                 validation:{
-                    required:true
+                    required:false
                 },
-                valid:false,
+                valid:true,
                 touched:false,
                 validationMessage:''
             }
@@ -172,7 +172,7 @@ class Dashboard extends Component {
                
                 dataToSubmit['date'] = firebase.database.ServerValue.TIMESTAMP;
                 dataToSubmit['id'] = articleId + 1;
-                dataToSubmit['team']= parseInt(dataToSubmit['team'], 10);
+                
 
                 firebaseArticles.push(dataToSubmit)
                 .then( article => {
