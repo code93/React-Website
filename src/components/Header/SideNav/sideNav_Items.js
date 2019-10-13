@@ -25,13 +25,13 @@ const SideNavItems = (props) => {
             link: '/news',
             login: ''
         },
-        {
-            type: style.option,
-            icon: 'play',
-            text: 'Videos',
-            link: '/videos',
-            login: ''
-        },
+        // {
+        //     type: style.option,
+        //     icon: 'play',
+        //     text: 'Videos',
+        //     link: '/videos',
+        //     login: ''
+        // },
         {
             type: style.option,
             icon: 'sign-in',

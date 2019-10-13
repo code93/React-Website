@@ -258,11 +258,11 @@ class Dashboard extends Component {
 
                          />
 
-                        <FormField
+                        {/* <FormField
                         id={'team'}
                         formdata={this.state.formdata.team}
                         change={(element)=>this.updateForm(element)}
-                         />
+                         /> */}
 
                      { this.submitButton() }
                      { this.showError() }

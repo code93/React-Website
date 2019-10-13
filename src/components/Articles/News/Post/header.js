@@ -19,7 +19,7 @@ const header = (props) => {
 
     return(
         <div>
-            {teamInfo(props.teamData)}
+            {/* {teamInfo(props.teamData)} */}
             {postData(props.date, props.author)}
         </div>
     )
