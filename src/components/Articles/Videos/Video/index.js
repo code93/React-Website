@@ -54,8 +54,8 @@ class VideoArticle extends Component {
              const teams = firebaseLooper(snapshot);
 
              firebaseVideos
-             .orderByChild("team").
-             equalTo(this.state.article.team)
+             .orderByChild("team")
+             .equalTo(this.state.article.team)
              .limitToFirst(3).once('value')
              .then((snapshot)=>{
                  const related = firebaseLooper(snapshot);

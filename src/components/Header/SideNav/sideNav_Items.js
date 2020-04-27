@@ -25,13 +25,13 @@ const SideNavItems = (props) => {
             link: '/news',
             login: ''
         },
-        // {
-        //     type: style.option,
-        //     icon: 'play',
-        //     text: 'Videos',
-        //     link: '/videos',
-        //     login: ''
-        // },
+        {
+            type: style.option,
+            icon: 'play',
+            text: 'Videos',
+            link: '/videos',
+            login: ''
+        },
         {
             type: style.option,
             icon: 'sign-in',
@@ -112,12 +112,7 @@ const SideNavItems = (props) => {
         })
     }
 
-{/* <div className={style.option}>
-            <Link to="/">
-                <FontAwesome name="home"/>
-                Home
-            </Link>    
-</div>*/}
+
 
     return(
         <div>
