@@ -21,7 +21,7 @@ const SideNavItems = (props) => {
         {
             type: style.option,
             icon: 'file-text-o',
-            text: 'news',
+            text: 'Articles',
             link: '/news',
             login: ''
         },

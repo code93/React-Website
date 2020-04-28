@@ -149,7 +149,7 @@ class SignIn extends Component {
         'loading...'
         :
         <div>
-            <button onClick={(event)=>this.submitForm(event,false)}> Register now</button>
+            {/* <button onClick={(event)=>this.submitForm(event,false)}> Register now</button> */}
             <button onClick={(event)=>this.submitForm(event,true)}> Log In</button>
         </div>
     )

@@ -67,7 +67,7 @@ class NewsArticles extends Component {
         return(
             <div className={styles.articleWrapper}>
                 <Header
-                    teamData={team[0]}
+                    // teamData={team[0]}
                     date={article.date}
                     author={article.author}
                 />
