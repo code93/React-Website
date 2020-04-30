@@ -1,9 +1,9 @@
 import React, {Component} from 'react';
-import { firebaseDB, firebaseLooper, firebaseTeams, firebaseVideos } from '../../../../firebase';
+import { firebaseDB, firebaseLooper, firebaseVideos } from '../../../../firebase';
 
 import styles from '../../articles.css';
 import Header from './header';
-import VideosRelated from '../../../widgets/VideosList/VideosRelated/videosRelated';
+// import VideosRelated from '../../../widgets/VideosList/VideosRelated/videosRelated';
 
 
 class VideoArticle extends Component {
@@ -20,14 +20,14 @@ class VideoArticle extends Component {
         .then((snapshot)=>{
             let article = snapshot.val();
 
-             firebaseTeams.orderByChild("id").equalTo(article.team).once('value')
+             firebaseVideos.orderByChild("id").equalTo(article.id).once('value')
              .then((snapshot)=>{
-                 const team= firebaseLooper(snapshot);
+                 const id= firebaseLooper(snapshot);
                  this.setState({
                      article,
-                     team
+                     id
                  })
-                 this.getRelated();
+                //  this.getRelated();
              })
 
         })
@@ -48,23 +48,23 @@ class VideoArticle extends Component {
         // })
     }
 
-    getRelated = () => {
-        firebaseTeams.once('value')
-         .then((snapshot)=>{
-             const teams = firebaseLooper(snapshot);
+    // getRelated = () => {
+    //     firebaseVideos.once('value')
+    //      .then((snapshot)=>{
+    //          const id = firebaseLooper(snapshot);
 
-             firebaseVideos
-             .orderByChild("team")
-             .equalTo(this.state.article.team)
-             .limitToFirst(3).once('value')
-             .then((snapshot)=>{
-                 const related = firebaseLooper(snapshot);
-                 this.setState({
-                     teams,
-                     related
-                 })
-             })
-         })
+    //          firebaseVideos
+    //          .orderByChild("id")
+    //          .equalTo(this.state.article.id)
+    //          .limitToFirst(3).once('value')
+    //          .then((snapshot)=>{
+    //              const related = firebaseLooper(snapshot);
+    //              this.setState({
+    //                  id,
+    //                  related
+    //              })
+    //          })
+    //      })
         // axios.get(`${URL}/teams`)
         // .then( response =>{
 
@@ -79,16 +79,16 @@ class VideoArticle extends Component {
         //     })
         // })
 
-    }
+    
 
 
     render(){
         const article = this.state.article;
-        const team = this.state.team;
+        
 
         return(
             <div>
-                <Header teamData={team[0]}/>
+                <Header />
                 <div className={styles.videoWrapper}>
                     <h1>{article.title}</h1>
                     <iframe
@@ -100,9 +100,9 @@ class VideoArticle extends Component {
 
                     </iframe>
                 </div>
-                <VideosRelated 
+                {/* <VideosRelated 
                 data={this.state.related}
-                teams={this.state.teams}/>
+               /> */}
 
             </div>
         )

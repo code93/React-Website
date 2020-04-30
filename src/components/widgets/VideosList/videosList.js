@@ -1,6 +1,6 @@
 import React, { Component } from 'react';
 import styles from './videosList.css';
-import { firebaseTeams, firebaseLooper, firebaseVideos } from '../../../firebase';
+import { firebaseLooper, firebaseVideos } from '../../../firebase';
 
 import Button from '../Buttons/buttons';
 import VideosListTemplate from './videosListTemplate'
@@ -8,7 +8,6 @@ import VideosListTemplate from './videosListTemplate'
 class VideosList extends Component {
 
     state = {
-        teams:[],
         videos:[],
         start: this.props.start,
         end: this.props.start + this.props.amount,
@@ -20,12 +19,12 @@ class VideosList extends Component {
     }
 
     request = (start, end) => {
-        if(this.state.teams.length < 1) {
-            firebaseTeams.once('value')
+        if(this.state.videos.length < 1) {
+            firebaseVideos.once('value')
             .then((snapshot)=>{
-                const teams = firebaseLooper(snapshot);
+                const videos = firebaseLooper(snapshot);
                 this.setState({
-                    teams
+                    videos
                 })
             })
         }
@@ -50,7 +49,7 @@ class VideosList extends Component {
 
         switch(this.props.type){
             case('card'):
-                template = <VideosListTemplate data={this.state.videos} teams={this.state.teams}/>
+                template = <VideosListTemplate data={this.state.videos} id={this.state.id} />
             break;
             default:
                 template = null

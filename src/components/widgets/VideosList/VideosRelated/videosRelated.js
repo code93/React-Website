@@ -6,7 +6,7 @@ const videosRelated = (props) => (
     <div className={styles.relatedWrapper}>
         <VideoListTemplate
         data={props.data}
-        teams={props.teams}
+        
         />
 
     </div>
