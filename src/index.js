@@ -1,5 +1,10 @@
 import React from 'react';
 import ReactDOM from 'react-dom';
+import { Provider } from 'react-redux';
+import { createStore, applyMiddleware } from 'redux';
+
+import reducers from './reducers'
+
 import './index.css';
 import { BrowserRouter } from 'react-router-dom';
 import { firebase } from './firebase';
@@ -17,6 +22,12 @@ const App = (props) => {
 
 }
 
+const createStoreWithMiddleware = applyMiddleware()(createStore)
+
 firebase.auth().onAuthStateChanged((user)=>{
-    ReactDOM.render(<App user={user}/>, document.getElementById('root'));
+    ReactDOM.render(
+    <Provider store={createStoreWithMiddleware(reducers)}>
+        <App user={user}/>
+    </Provider>
+    , document.getElementById('root'));
 })
